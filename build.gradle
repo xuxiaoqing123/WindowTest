@@ -1,0 +1,53 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply plugin: ApkPlugin
+
+class ApkPlugin implements Plugin<Project>{
+    @Override
+    void apply(Project target) {
+//        project.task("test1") << {
+            println "test1"
+//        }
+
+    }
+}
+buildscript {
+    
+    repositories {
+//        google()
+//        jcenter()
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url  "https://dl.bintray.com/canyie/pine" }
+        
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.6.3'
+//        implementation 'top.canyie.pine:core:0.2.4'
+        
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+//        google()
+//        jcenter()
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url "https://dl.bintray.com/canyie/pine" }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+println "配置project"
+
+task task1 {
+    println "配置task1"
+    doLast {
+        println "执行task1"
+    }
+}
